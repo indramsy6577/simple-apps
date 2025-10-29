@@ -7,6 +7,6 @@ services:
       - "5000:3000"
     volumes:
       - vol-simple:/app/public/images/
-    user: "app"  # Menambahkan user 'app' pada container
+
 volumes:
   vol-simple:
