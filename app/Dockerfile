@@ -6,11 +6,7 @@ COPY /app /app
 
 RUN npm install --ignore-scripts
 
-RUN addgroup -S app && \
-    adduser -S app -G app && \
-    chown -R app:app /app
-
-USER app
+USER nonroot
 
 EXPOSE 3000
 CMD ["npm", "start"]
