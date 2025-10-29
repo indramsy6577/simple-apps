@@ -3,8 +3,6 @@ FROM node:18.20-slim
 # Membuat user dan group
 RUN groupadd -r app && useradd -r -g app -d /home/app -m app
 
-# Menetapkan direktori kerja
-WORKDIR /app
 
 # Menyalin file ke container
 COPY /app /app
