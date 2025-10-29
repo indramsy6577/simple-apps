@@ -2,9 +2,6 @@ name : simple
 
 services:
   app:
-    build:
-      context: .
-      dockerfile: app/Dockerfile
     image: indramuliasy/simple-indra:1.1
     ports:
       - "5000:3000"
