@@ -7,6 +7,6 @@ services:
       - "5000:3000"
     volumes:
       - vol-simple:/app/public/images/
-    user: "lab-91"  # Menambahkan user 'lab-91' pada container
+    user: "www-data"  # Menambahkan user 'lab-91' pada container
 volumes:
   vol-simple:
