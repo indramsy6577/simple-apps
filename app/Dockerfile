@@ -1,6 +1,6 @@
 FROM node:18.20-slim
 WORKDIR /app
-ADD . /app
+COPY /app /app
 RUN npm install
 EXPOSE 3000
 CMD ["npm", "start"]
