@@ -2,7 +2,7 @@ name : simple
 
 services:
   app:
-    image: indramuliasy/simple-indra:1.0
+    image: indramuliasy/simple-indra
     ports:
       - "5000:3000"
     volumes:
