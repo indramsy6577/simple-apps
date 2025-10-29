@@ -1,4 +1,4 @@
-FFROM node:18.20-slim
+FROM node:18.20-slim
 
 # Membuat user dan group
 RUN groupadd -r app && useradd -r -g app -d /home/app -m app
