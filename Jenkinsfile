@@ -1,23 +1,16 @@
 pipeline {
     agent { label 'dev' }
 
-    environment {
-        TZ = 'Asia/Jakarta'
-        SONAR_HOST = 'http://10.25.200.92:9000'
-        SONAR_TOKEN = credentials('sonar-token') // Gunakan credential store Jenkins
-    }
-
     stages {
         stage('Pull SCM') {
             steps {
-                echo "📥 Pulling source code from GitHub..."
+                echo "📥 Starting build at: ${new Date()}"
                 git branch: 'main', url: 'https://github.com/indramsy6577/simple-apps.git'
             }
         }
         
         stage('Build') {
             steps {
-                echo "🏗️  Building Node.js app..."
                 sh '''
                 cd app
                 npm install
@@ -27,7 +20,6 @@ pipeline {
         
         stage('Testing') {
             steps {
-                echo "🧪 Running tests..."
                 sh '''
                 cd app
                 APP_PORT=5001 npm test
@@ -38,32 +30,23 @@ pipeline {
         
         stage('Code Review') {
             steps {
-                echo "🔍 Running SonarQube scan..."
                 sh '''
                 cd app
                 sonar-scanner \
                     -Dsonar.projectKey=simple-apps \
                     -Dsonar.sources=. \
-                    -Dsonar.host.url=$SONAR_HOST \
-                    -Dsonar.token=$SONAR_TOKEN
-                '''
-            }
-        }
-
-        stage('Cleanup') {
-            steps {
-                echo "🧹 Cleaning up old containers and networks..."
-                sh '''
-                docker compose down || true
-                docker container prune -f || true
+                    -Dsonar.host.url=http://10.25.200.92:9000 \
+                    -Dsonar.token=sqp_d25c608fd76c9d5e87cb079811682a94b4b51566
                 '''
             }
         }
         
         stage('Deploy') {
             steps {
-                echo "🚀 Deploying new version..."
                 sh '''
+                # Matikan container lama kalau masih jalan
+                docker compose down || true
+                # Jalankan container baru
                 docker compose up --build -d
                 '''
             }
@@ -71,23 +54,20 @@ pipeline {
         
         stage('Backup') {
             steps {
-                echo "📦 Pushing images to backup registry..."
-                sh '''
-                docker compose push || true
-                '''
+                sh 'docker compose push'
             }
         }
     }
 
     post {
         success {
-            echo "✅ Pipeline completed successfully!"
+            sh 'echo "✅ Build succeeded at: $(date)"'
         }
         failure {
-            echo "❌ Pipeline failed. Check logs for details."
+            sh 'echo "❌ Build failed at: $(date)"'
         }
         always {
-            echo "🕒 Build finished at: $(date)"
+            echo "🕒 Build finished at: ${new Date()}"
         }
     }
 }
