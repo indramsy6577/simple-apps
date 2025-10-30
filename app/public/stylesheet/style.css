@@ -6,15 +6,16 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #f8f9fa;
-    color: #2d3436;
+    background: #0f172a;
+    color: #e2e8f0;
     line-height: 1.6;
     overflow-x: hidden;
 }
 
 nav {
-    background: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: fixed;
     width: 100%;
     top: 0;
@@ -36,14 +37,14 @@ nav {
 }
 
 .nav-links a {
-    color: #2d3436;
+    color: #e2e8f0;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #0984e3;
+    color: #38bdf8;
 }
 
 .logo {
@@ -147,15 +148,19 @@ h1 {
 }
 
 .feature-card {
-    background: #f8f9fa;
+    background: rgba(30, 41, 59, 0.5);
     padding: 2rem;
     border-radius: 15px;
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 .feature-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+    border-color: rgba(56, 189, 248, 0.3);
 }
 
 .feature-card i {
@@ -185,9 +190,10 @@ footer {
 
 h2 {
     font-size: 2rem;
-    color: #2d3436;
+    color: #e2e8f0;
     text-align: center;
     margin-bottom: 1rem;
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
 }
 
 .service-grid {
@@ -198,11 +204,12 @@ h2 {
 }
 
 .service-card {
-    background: white;
+    background: rgba(30, 41, 59, 0.5);
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
 }
 
 .service-card:hover {
@@ -384,15 +391,15 @@ h2 {
 }
 
 #features {
-    background: #f8f9fa;
+    background: #1e293b;
 }
 
 #services {
-    background: white;
+    background: #0f172a;
 }
 
 #programs {
-    background: #f8f9fa;
+    background: #1e293b;
 }
 
 .feature-grid, .service-grid {
