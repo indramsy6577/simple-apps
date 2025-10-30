@@ -6,7 +6,7 @@ services:
     ports:
       - "5000:3000"
     volumes:
-      - vol-simple:/app/public/
+      - ./app/public:/app/public:rw
     user: "www-data"  # Menambahkan user 'lab-91' pada container
 volumes:
   vol-simple:
